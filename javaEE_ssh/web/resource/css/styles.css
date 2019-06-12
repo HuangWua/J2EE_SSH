@@ -1,0 +1,178 @@
+/*
+ * 全局
+ */
+
+
+/*
+ * 顶部导航条
+ */
+.navbar {
+  margin-bottom: 0px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.navbar-brand {
+  margin-left: -15px;
+}
+
+.navbar-text {
+  display: inline-block;
+}
+
+.navbar-text > li {
+  display: inline-block;
+}
+
+.navbar-text > li + li:before {
+  padding: 0 5px;
+  content: "/\00a0";
+}
+
+
+/*
+ * 左侧工具条
+ */
+.sidebar {
+  position: relative;
+  min-width: 150px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.sidebar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+.sidebar-fixed-left {
+  position: fixed;
+  top: 51px; /* 50px navbar + 1px border */
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  border-radius: 0;
+  border-width: 0 1px 0 0;
+}
+
+/* 主体菜单栏 */
+.sidebar-accordion {
+  width: 150px;
+}
+
+.sidebar-nav {
+}
+
+/* 一级菜单 */
+.sidebar-nav li > a > i ~ span {
+  margin-left: 6px;
+}
+
+/* 一级菜单选中效果 */
+.sidebar-nav > li.active > a {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/* 二级菜单 */
+.sidebar-nav ul {
+  padding-left: 28px;
+}
+
+/* 二级菜单选中效果 */
+.sidebar-nav > li.active li.active > a {
+  background-color: #eee;
+}
+
+/* 隐藏工具条 */
+.sidebar-none {
+  display: none;
+}
+
+/* 简版工具条 */
+.sidebar-simple {
+  min-width: 33px;
+}
+
+.sidebar-simple .sidebar-accordion {
+  width: 33px;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li > a {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li span {
+  display: none;
+}
+
+/* 简版工具条悬浮效果 */
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover {
+  width: 150px;
+  position: relative;
+  z-index: 2000;
+  display: block;
+  background-color: #f8f8f8;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover > a > i {
+  cursor: default;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover > a > i ~ span {
+  margin-left: 16px;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover > ul > li {
+  margin-left: 10px;
+  background-color: #f8f8f8;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover span {
+  display: inline-block;
+}
+
+.sidebar-simple .sidebar-accordion .sidebar-nav > li:hover .collapse {
+  display: block;
+  height: 0px;
+}
+
+/* 简版工具条切换按钮 */
+.sidebar-toggle {
+  clear: both;
+}
+
+.sidebar-toggle > button {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 122px;
+}
+
+.sidebar-simple .sidebar-toggle > button {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 4px;
+}
+
+.sidebar-simple .sidebar-toggle > button > span:before {
+  content: "\e080";
+}
+
+
+/*
+ * 主要内容页
+ */
+.page {
+  margin-top: 20px; /* 50px navbar + 1px border + 15px blank */
+  margin-right: 15px; 
+  margin-left: 166px; /* 150px sidebar + 1px border + 15px blank */
+}
+
+.sidebar-none ~ .page {
+  margin-left: 15px; /* 15px blank */
+}
+
+.sidebar-simple ~ .page {
+  margin-left: 49px; /* 33px sidebar + 1px border + 15px blank */
+}

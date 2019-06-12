@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.duan.ssh.entity.User" table="user" schema="javaee_ssh">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="username" column="username" not-null="true"/>
+        <property name="password" column="password" not-null="true"/>
+        <property name="defaultPhone" column="defaultPhone"/>
+        <property name="defaultAddress" column="defaultAddress"/>
+        <property name="gender" column="gender"/>
+        <property name="money" column="money"/>
+        <property name="role" column="role"/>
+        <set name="setOrder" cascade="delete" inverse="true" lazy="false" order-by="id desc">
+            <key column="user_id"></key>
+            <one-to-many class="com.duan.ssh.entity.Order"/>
+        </set>
+        <set name="setShoppingcart" cascade="delete" inverse="true" lazy="false" order-by="id desc">
+            <key column="user_id"></key>
+            <one-to-many class="com.duan.ssh.entity.Shoppingcart"/>
+        </set>
+    </class>
+</hibernate-mapping>

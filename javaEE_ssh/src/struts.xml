@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--<constant name="struts.devMode" value="false"/>-->
+    <constant name="struts.action.extension" value="action"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.multipart.maxSize" value="5242880"/>
+
+    <package name="custom_default" extends="json-default">
+
+        <interceptors>
+            <!--自定义拦截器-->
+            <interceptor name="loginInterceptor" class="com.duan.ssh.interceptor.LoginInterceptor"/>
+            <interceptor name="managerInterceptor" class="com.duan.ssh.interceptor.ManagerInterceptor"/>
+            <!--自定义拦截器栈-->
+            <interceptor-stack name="loginStack">
+                <!--拦截器栈包含自定义的拦截器和默认拦截器-->
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+            <interceptor-stack name="managerStack">
+                <!--拦截器栈包含自定义的拦截器和默认拦截器-->
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="managerInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+        </interceptors>
+
+        <global-results>
+            <result name="login" type="json">
+                <param name="root">result</param>
+            </result>
+            <result name="power_low" type="json">
+                <param name="root">result</param>
+            </result>
+        </global-results>
+
+    </package>
+
+    <!--<package name="ssh" extends="struts-default,json-default" namespace="/user">-->
+    <!--&lt;!&ndash;<result-types>-->
+    <!--<result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>-->
+    <!--</result-types>&ndash;&gt;-->
+    <!--<action name="user_*" class="userAction" method="{1}">-->
+    <!--<result name="success">/success.jsp-->
+    <!--</result>-->
+    <!--<result name="error" type="redirect">/index.jsp</result>-->
+    <!--<allowed-methods>register,input,execute,login,loginVerifyCode,getUserById</allowed-methods>-->
+    <!--</action>-->
+    <!--</package>-->
+
+</struts>
